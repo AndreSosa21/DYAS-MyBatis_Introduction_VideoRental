@@ -9,6 +9,7 @@
     
     <properties resource="config.properties">
     </properties>
+    
     <typeAliases>
         <typeAlias type="edu.unisabana.dyas.samples.entities.Cliente" alias="Cliente"/>
         <typeAlias type="edu.unisabana.dyas.samples.entities.Item" alias="Item"/>
@@ -36,6 +37,9 @@
         <mapper resource="mappers/ItemMapper.xml"></mapper>
         <mapper resource="mappers/TipoItemMapper.xml"></mapper>        
     </mappers> 
+    <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+        SENTENCIA SQL
+    </select>
         
         
 </configuration>
