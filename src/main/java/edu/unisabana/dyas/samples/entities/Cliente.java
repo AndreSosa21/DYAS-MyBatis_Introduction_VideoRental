@@ -17,19 +17,19 @@ public class Cliente implements Serializable{
     private String direccion;
     private String email;
     private boolean vetado;
-    private ArrayList<ItemRentado> rentados; 
+    private ArrayList<ItemRentado> itemsRentados; 
 
     public Cliente() {
     }
 
-    public Cliente(String nombre, long documento, String telefono, String direccion, String email, boolean vetado, ArrayList<ItemRentado> rentados) {   
+    public Cliente(String nombre, long documento, String telefono, String direccion, String email, boolean vetado, ArrayList<ItemRentado> itemsRentados) {   
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
         this.direccion = direccion;
         this.email = email;
         this.vetado = vetado;
-        this.rentados = rentados;
+        this.itemsRentados = itemsRentados;
     }
 
   
@@ -40,7 +40,7 @@ public class Cliente implements Serializable{
         this.direccion = direccion;
         this.email = email;
         this.vetado = false;
-        this.rentados = new ArrayList<>();
+        this.itemsRentados = new ArrayList<>();
     }
 
            
@@ -92,17 +92,17 @@ public class Cliente implements Serializable{
         this.vetado = betado;
     }
 
-    public ArrayList<ItemRentado> getRentados() {
-        return rentados;
+    public ArrayList<ItemRentado> getitemsRentados() {
+        return itemsRentados;
     }
 
-    public void setRentados(ArrayList<ItemRentado> Rentados) {
-        this.rentados = Rentados;
+    public void setitemsRentados(ArrayList<ItemRentado> itemsRentados) {
+        this.itemsRentados = itemsRentados;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "nombre=" + nombre + ", documento=" + documento + ", rentados=\n\t" + rentados + '}';
+        return "Cliente{" + "nombre=" + nombre + ", documento=" + documento + ", itemsRentados=\n\t" + itemsRentados + '}';
     }
 
    

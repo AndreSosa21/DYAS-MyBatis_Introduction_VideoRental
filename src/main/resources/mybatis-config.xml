@@ -36,10 +36,5 @@
         <mapper resource="mappers/ClienteMapper.xml"></mapper>
         <mapper resource="mappers/ItemMapper.xml"></mapper>
         <mapper resource="mappers/TipoItemMapper.xml"></mapper>        
-    </mappers> 
-    <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
-        SENTENCIA SQL
-    </select>
-        
-        
+    </mappers>    
 </configuration>

@@ -4,50 +4,70 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ClienteMapper">
-<select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
-        select
-    c.nombre,
-    c.documento,
-    c.telefono,
-    c.direccion,
-    c.email,
-    c.vetado,
-    ir.ITEMS_id ,
-    ir.fechainiciorenta ,
-    ir.fechafinrenta ,
-    i.id ,
-    i.nombre ,
-    i.descripcion ,
-    i.fechalanzamiento ,
-    i.tarifaxdia ,
-    i.formatorenta ,
-    i.genero ,        
-    ti.id ,
-    ti.descripcion 
-    FROM VI_CLIENTES as c 
-    left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
-    left join VI_ITEMS as i on ir.ITEMS_id=i.id 
-    left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id;
 
-</select>
-<resultMap type='Maestro' id='MaestroResult'>
-    <id property='propiedad1' column='COLUMNA1'/>
-    <result property='propiedad2' column='COLUMNA2'/>
-    <result property='propiedad3' column='COLUMNA3'/>  
-    <association property="propiedad5" javaType="DetalleDos"></association>      
-    <collection property='propiedad4' ofType='DetalleUno'></collection>
-</resultMap>
+    <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+        SELECT
+            c.nombre AS 'Nombre_Cliente',
+            c.documento,
+            c.telefono,
+            c.direccion,
+            c.email,
+            c.vetado,
+            ir.ITEMS_id,
+            ir.fechainiciorenta,
+            ir.fechafinrenta,
+            i.id AS 'ID_Item',
+            i.nombre AS 'Nombre_Item',
+            i.descripcion AS 'Descripcion_Item',
+            i.fechalanzamiento,
+            i.tarifaxdia,
+            i.formatorenta,
+            i.genero,        
+            ti.id AS 'ID_Tipo_Item',
+            ti.descripcion AS 'Descripcion_Tipo_Item'
+        FROM VI_CLIENTES AS c 
+        LEFT JOIN VI_ITEMRENTADO AS ir ON c.documento = ir.CLIENTES_documento 
+        LEFT JOIN VI_ITEMS AS i ON ir.ITEMS_id = i.id 
+        LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id;
+    </select>
 
-<resultMap type='DetalleUno' id='DetalleUnoResult'>
-    <id property='propiedadx' column='COLUMNAX'/>
-    <result property='propiedady' column='COLUMNAY'/>
-    <result property='propiedadz' column='COLUMNAZ'/> 
-<association property="propiedadw" javaType="DetalleDos"></association>      
-</resultMap>
+    <resultMap type='Cliente' id='ClienteResult'>
+        <id property='documento' column='documento'/>
+        <result property='nombre' column='Nombre_Cliente'/>
+        <result property='telefono' column='telefono'/>
+        <result property='direccion' column='direccion'/>  
+        <result property="email" column="email"/>      
+        <result property="vetado" column="vetado"/>
+        
+        <!-- Relación Uno a Muchos con ItemRentado -->
+        <collection property="itemsRentados" ofType="ItemRentado" resultMap="ItemRentadoResult"/>
+    </resultMap>
 
-<resultMap type='DetalleDos' id='DetalleDosResult'>
-    <id property='propiedadr' column='COLUMNAR'/>
-    <result property='propiedads' column='COLUMNAS'/>
-    <result property='propiedadt' column='COLUMNAT'/>        
-</resultMap>
+    <resultMap type='ItemRentado' id='ItemRentadoResult'>
+        <id property='id' column='ITEMS_id'/>
+        <result property='fechainiciorenta' column='fechainiciorenta'/> 
+        <result property="fechafinrenta" column="fechafinrenta"/>
+
+        <!-- Relación Uno a Uno con Item -->
+        <association property="item" javaType="Item" resultMap="ItemResult"/>
+    </resultMap>
+
+    <resultMap type='Item' id='ItemResult'>
+        <id property='id' column='ID_Item'/>
+        <result property='nombre' column='Nombre_Item'/>
+        <result property='descripcion' column='Descripcion_Item'/>
+        <result property='fechaLanzamiento' column='fechaanzamiento'/>
+        <result property='tarifaxDia' column='tarifaxDia'/>
+        <result property='formatoRenta' column='formatoRenta'/>
+        <result property='genero' column='genero'/>
+        
+        <!-- Relación Uno a Uno con TipoItem -->
+        <association property="tipo" javaType="TipoItem" resultMap="TipoItemResult"/>
+    </resultMap>
+
+    <resultMap type='TipoItem' id='TipoItemResult'>
+        <id property='id' column='ID_Tipo_Item'/>
+        <result property='descripcion' column='Descripcion_Tipo_Item'/>
+    </resultMap>
+
 </mapper>
