@@ -5,7 +5,35 @@
   
 <mapper namespace="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.TipoItemMapper">
 
-    
+    <select parameterType="map" id="getTiposItems" resultMap="TipoItemResult">
+        SELECT
+            c.nombre AS 'Nombre_Cliente',
+            c.documento,
+            c.telefono,
+            c.direccion,
+            c.email,
+            c.vetado,
+            ir.ITEMS_id,
+            ir.fechainiciorenta,
+            ir.fechafinrenta,
+            i.id AS 'ID_Item',
+            i.nombre AS 'Nombre_Item',
+            i.descripcion AS 'Descripcion_Item',
+            i.fechalanzamiento,
+            i.tarifaxdia,
+            i.formatorenta,
+            i.genero,        
+            ti.id AS 'ID_Tipo_Item',
+            ti.descripcion AS 'Descripcion_Tipo_Item'
+        FROM VI_CLIENTES AS c 
+        LEFT JOIN VI_ITEMRENTADO AS ir ON c.documento = ir.CLIENTES_documento 
+        LEFT JOIN VI_ITEMS AS i ON ir.ITEMS_id = i.id 
+        LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id;
+    </select>
 
-                
+    <resultMap type='TipoItem' id='TipoItemResult'>
+        <id property='id' column='ID_Tipo_Item'/>
+        <result property='descripcion' column='Descripcion_Tipo_Item'/>
+    </resultMap>
+
 </mapper>

@@ -56,7 +56,7 @@
             </execution>
             </executions>
             <configuration>
-                <mainClass>edu.unisabana.samples.services.SQLiteConnection</mainClass>
+                <mainClass>edu.unisabana.dyas.samples.services.client.MyBatisExample</mainClass>
             </configuration>
             </plugin>
 

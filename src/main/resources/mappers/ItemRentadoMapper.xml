@@ -3,9 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ClienteMapper">
+<mapper namespace="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemRentadoMapper">
 
-    <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+    <select parameterType="map" id="consultarItemRentado" resultMap="ItemRentadoResult">
         SELECT
             c.nombre AS 'Nombre_Cliente',
             c.documento,
@@ -31,16 +31,16 @@
         LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id;
     </select>
 
-    <resultMap type='Cliente' id='ClienteResult'>
-        <id property='documento' column='documento'/>
-        <result property='nombre' column='Nombre_Cliente'/>
-        <result property='telefono' column='telefono'/>
-        <result property='direccion' column='direccion'/>  
-        <result property="email" column="email"/>      
-        <result property="vetado" column="vetado"/>
-        
-        <!-- Relación Uno a Muchos con ItemRentado -->
-        <collection property="itemsRentados" ofType="ItemRentado" 
-            resultMap="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.ItemRentadoResult"/>
-        </resultMap>   
+    <resultMap type='ItemRentado' id='ItemRentadoResult'>
+        <id property='id' column='ITEMS_id'/>
+        <result property='fechainiciorenta' column='fechainiciorenta'/> 
+        <result property="fechafinrenta" column="fechafinrenta"/>
+
+        <!-- Relación Uno a Uno con Item -->
+        <association property="item" javaType="Item" 
+         resultMap="edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult"/>
+    </resultMap>
+
+    
+
 </mapper>

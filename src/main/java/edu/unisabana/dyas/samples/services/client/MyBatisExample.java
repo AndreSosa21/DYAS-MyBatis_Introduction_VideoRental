@@ -27,6 +27,10 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.TipoItemMapper;
+
+
 
 /**
  *
@@ -62,8 +66,17 @@ public class MyBatisExample {
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
         SqlSession sqlss = sessionfact.openSession();
+        
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
         System.out.println(cm.consultarClientes());
+        
+        ItemMapper Im=sqlss.getMapper(ItemMapper.class);
+        System.out.println(Im.consultarItems());
+
+        TipoItemMapper tim=sqlss.getMapper(TipoItemMapper.class);
+        System.out.println(tim.getTiposItems());
+
+         
  
         sqlss.commit();
         sqlss.close();  
