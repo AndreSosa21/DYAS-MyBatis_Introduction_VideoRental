@@ -82,13 +82,14 @@ public class MyBatisExample {
         
         System.out.println("cliente actualizado");
         System.out.println(cm.consultarClientes(123456789));
+
+        System.out.println("Consultando tipos de items");
+        System.out.println(tim.getTiposItems()); 
         
         System.out.println("Consultando items");
         System.out.println(Im.consultarItems());
 
-        System.out.println("Consultando tipos de items");
-        System.out.println(tim.getTiposItems()); 
-
+        
         System.out.println("Consultando item con id 2");
         System.out.println(Im.consultarItem(2));
         
