@@ -76,14 +76,17 @@ public class MyBatisExample {
         TipoItemMapper tim=sqlss.getMapper(TipoItemMapper.class);
         ItemRentadoMapper irm=sqlss.getMapper(ItemRentadoMapper.class);
         
+        System.out.println("Consultar clientes");
+        System.out.println(cm.consultarClientes());
+        
         System.out.println("Consultar cliente con id 123456789");
-        System.out.println(cm.consultarClientes(123456789));
+        System.out.println(cm.consultarCliente(123456789));
 
         System.out.println("Insertando item rentado");
         irm.agregarItemRentadoACliente(123456789, 3, "2024-08-11", "2024-08-12");
         
         System.out.println("cliente actualizado");
-        System.out.println(cm.consultarClientes(123456789));
+        System.out.println(cm.consultarCliente(123456789));
 
         System.out.println("Consultando tipos de items");
         System.out.println(tim.getTiposItems()); 
