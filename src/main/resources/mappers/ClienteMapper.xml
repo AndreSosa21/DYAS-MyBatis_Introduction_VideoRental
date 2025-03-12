@@ -28,7 +28,8 @@
         FROM VI_CLIENTES AS c 
         LEFT JOIN VI_ITEMRENTADO AS ir ON c.documento = ir.CLIENTES_documento 
         LEFT JOIN VI_ITEMS AS i ON ir.ITEMS_id = i.id 
-        LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id;
+        LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id
+        WHERE c.documento = #{idcli};
     </select>
 
     <resultMap type='Cliente' id='ClienteResult'>

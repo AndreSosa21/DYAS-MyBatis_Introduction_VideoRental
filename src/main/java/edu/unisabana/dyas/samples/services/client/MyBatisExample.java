@@ -68,13 +68,13 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
         
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-        System.out.println(cm.consultarClientes());
+        System.out.println(cm.consultarClientes(123456789));
         
-        ItemMapper Im=sqlss.getMapper(ItemMapper.class);
+        /* ItemMapper Im=sqlss.getMapper(ItemMapper.class);
         System.out.println(Im.consultarItems());
 
         TipoItemMapper tim=sqlss.getMapper(TipoItemMapper.class);
-        System.out.println(tim.getTiposItems());
+        System.out.println(tim.getTiposItems()); */
 
          
  
