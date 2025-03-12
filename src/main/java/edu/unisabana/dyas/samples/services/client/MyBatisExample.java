@@ -100,7 +100,7 @@ public class MyBatisExample {
             TipoItem tipo = new TipoItem(4, "Película"); 
             Item newItem = new Item(
                 tipo,                  // TipoItem
-                999,                   // id
+                4,                   // id
                 "Mi Nueva Película",   // nombre
                 "Descripción breve",   // descripción
                 "2025-03-10",          // fechaLanzamiento (String)
