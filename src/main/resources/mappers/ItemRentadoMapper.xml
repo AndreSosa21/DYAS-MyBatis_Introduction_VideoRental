@@ -30,9 +30,9 @@
         LEFT JOIN VI_ITEMS AS i ON ir.ITEMS_id = i.id 
         LEFT JOIN VI_TIPOITEM AS ti ON i.TIPOITEM_id = ti.id;
     </select>
-    <insert id="insertarCliente" parameterType="map">
-        INSERT INTO VI_ITEMRENTADO (id,  ITEMS_id, fechainiciorenta, fechafinrenta)
-        VALUES (#{idcli}, #{idit}, #{echainiciorenta}, #{fechafinrenta});
+     <insert id="agregarItemRentadoACliente" parameterType="map">
+        INSERT INTO VI_ITEMRENTADO (CLIENTES_documento,  ITEMS_id, fechainiciorenta, fechafinrenta)
+        VALUES (#{idcli}, #{idit}, #{fechainicio}, #{fechafin});
     </insert>
 
     <resultMap type='ItemRentado' id='ItemRentadoResult'>

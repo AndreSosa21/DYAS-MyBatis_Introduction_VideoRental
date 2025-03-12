@@ -24,16 +24,13 @@ public interface ClienteMapper {
      * @param fechainicio
      * @param fechafin 
      */
-    public void agregarItemRentadoACliente(@Param("idcli")int id, 
-    @Param("idit")int idit, 
-    @Param("fechainicio")String fechainicio,
-    @Param("fechafin")String fechafin);
+    
 
     /**
      * Consultar todos los clientes
      * @param i 
      * @return 
      */
-    public List<Cliente> consultarClientes(int i);
+    public List<Cliente> consultarClientes(@Param("idcli") int id);
     
 }

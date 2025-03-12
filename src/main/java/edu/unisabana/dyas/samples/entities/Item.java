@@ -107,8 +107,8 @@ public class Item implements Serializable{
 
     @Override
     public String toString() {
-        return "Item{" + "tipo=" + tipo + ", id=" + id + ", nombre=" + nombre + ", tarifaxDia=" + tarifaxDia + '}';
-    }
+        return "Item{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", fechaLanzamiento=" + fechaLanzamiento + ", tarifaxDia=" + tarifaxDia + ", formatoRenta=" + formatoRenta + ", genero=" + genero + '}';
+}
 
 
     

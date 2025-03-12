@@ -29,6 +29,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.TipoItemMapper;
+import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemRentadoMapper;
+
 
 
 
@@ -68,19 +70,29 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
         
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
+        ItemMapper Im=sqlss.getMapper(ItemMapper.class);
+        TipoItemMapper tim=sqlss.getMapper(TipoItemMapper.class);
+        ItemRentadoMapper irm=sqlss.getMapper(ItemRentadoMapper.class);
+        
+        System.out.println("Consultar cliente con id 123456789");
+        System.out.println(cm.consultarClientes(123456789));
+
+        System.out.println("Insertando item rentado");
+        irm.agregarItemRentadoACliente(123456789, 3, "2024-08-11", "2024-08-12");
+        
+        System.out.println("cliente actualizado");
         System.out.println(cm.consultarClientes(123456789));
         
-        /* ItemMapper Im=sqlss.getMapper(ItemMapper.class);
+        System.out.println("Consultando items");
         System.out.println(Im.consultarItems());
 
-        TipoItemMapper tim=sqlss.getMapper(TipoItemMapper.class);
-        System.out.println(tim.getTiposItems()); */
+        System.out.println("Consultando tipos de items");
+        System.out.println(tim.getTiposItems()); 
 
-         
- 
+        System.out.println("Consultando item con id 2");
+        System.out.println(Im.consultarItem(2));
+        
         sqlss.commit();
         sqlss.close();  
     }
-
-
 }
