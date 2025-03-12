@@ -45,7 +45,7 @@
   </select>
   
   <insert id="insertarItem" parameterType="map">
-    INSERT INTO VI_ITEMS (id, nombre, descripcion, fechalanzamiento, tarifaxdia, formatoRenta, genero, ID_Item)
+    INSERT INTO VI_ITEMS (id, nombre, descripcion, fechalanzamiento, tarifaxdia, formatoRenta, genero, TIPOITEM_id)
     VALUES (#{item.id}, #{item.nombre}, #{item.descripcion}, #{item.fechaLanzamiento}, #{item.tarifaxDia}, #{item.formatoRenta}, #{item.genero}, #{item.tipo.id})
   </insert>
 

@@ -29,6 +29,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.TipoItemMapper;
+import edu.unisabana.dyas.samples.entities.Item;
+import edu.unisabana.dyas.samples.entities.TipoItem;
 import edu.unisabana.dyas.sampleprj.dao.mybatis.mappers.ItemRentadoMapper;
 
 
@@ -92,6 +94,27 @@ public class MyBatisExample {
         
         System.out.println("Consultando item con id 2");
         System.out.println(Im.consultarItem(2));
+
+        System.out.println("Insertando item");
+         // Crear un nuevo Item
+            TipoItem tipo = new TipoItem(4, "Película"); 
+            Item newItem = new Item(
+                tipo,                  // TipoItem
+                999,                   // id
+                "Mi Nueva Película",   // nombre
+                "Descripción breve",   // descripción
+                "2025-03-10",          // fechaLanzamiento (String)
+                5000,                  // tarifaxDia
+                "Blu-Ray",             // formatoRenta
+                "Acción"               // género
+            );
+
+            // Insertar el Item en la BD
+            Im.insertarItem(newItem);
+
+        System.out.println("Consultando items actualizado");
+        System.out.println(Im.consultarItems());   
+
         
         sqlss.commit();
         sqlss.close();  
