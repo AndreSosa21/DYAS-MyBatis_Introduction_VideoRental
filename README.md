@@ -1,5 +1,6 @@
 ### Universidad de la Sabana
 ### Diseño y Arquitectura de Software
+## trabajado por : Samuel Rodriguez, David Medina, Juan Gomez y Andrea Sosa
 #### Tecnologías de persistencia - Frameworks de Persistencia - Introducción a MyBatis
 
 En este taller se utilizará un 'framework' de persistencia. La base de datos que se utilizará tiene los siguientes parámetros:
